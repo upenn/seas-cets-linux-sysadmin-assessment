@@ -1,8 +1,8 @@
-# seas-cets-assistant-linux-sysadmin-assessment
+# seas-cets-linux-sysadmin-assessment
 
-# https://github.com/upenn/seas-cets-assistant-linux-sysadmin-assessment.git
+# https://github.com/upenn/seas-cets-linux-sysadmin-assessment.git
 
-Welcome to the SEAS CETS Assistant Linux Systems Administrator assessment!
+Welcome to the SEAS CETS Linux Systems Administrator assessment!
 
 
 BASH
