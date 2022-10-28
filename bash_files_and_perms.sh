@@ -15,54 +15,54 @@ function nextsegment() {
 oumask=$(umask)
 opwd=$(pwd)
 function resetall() {
-	umask $oumask
-	cd $opwd
-	segmentno=1
+        umask $oumask
+        cd $opwd
+        segmentno=1
 }
 
 function files() {
-	functionname="files"
+        functionname="files"
         umask 0000
 
-	nextsegment
-	rm authfile 2> /dev/null
-	ls -la authfile
+        nextsegment
+        rm authfile 2> /dev/null
+        ls -la authfile
 
-	echo "username gandalf" > authfile
-	echo "password youshallnotpassword" >> authfile
+        echo "username gandalf" > authfile
+        echo "password youshallnotpassword" >> authfile
 
-	nextsegment
-	ls -la authfile
+        nextsegment
+        ls -la authfile
 
-	nextsegment
-	chmod 0600 authfile
-	ls -la authfile
+        nextsegment
+        chmod 0600 authfile
+        ls -la authfile
 
-	nextsegment
-	cat authfile
+        nextsegment
+        cat authfile
 
-	nextsegment
-	grep username authfile
+        nextsegment
+        grep username authfile
 
-	rm authfile 2> /dev/null
-	resetall
+        rm authfile 2> /dev/null
+        resetall
 }
 
 function permissions() {
-	functionname="permissions"
+        functionname="permissions"
         umask 0777
 
         nextsegment
-	echo 1 > 1
-	echo 2 > 2
-	echo 3 > 3
-	echo 4 > 4
-	chmod u=rw,o=r 1
-	chmod u=rw,g=r 2
-	chmod g=r      3
-	chmod u=rw,o=r 4
+        echo 1 > 1
+        echo 2 > 2
+        echo 3 > 3
+        echo 4 > 4
+        chmod u=rw,o=r 1
+        chmod u=rw,g=r 2
+        chmod g=r      3
+        chmod u=rw,o=r 4
 
-	sudo chown root 2 4
+        sudo chown root 2 4
         sudo_worked=$?
 
         ls -la 1 2 3 4
@@ -73,18 +73,18 @@ function permissions() {
         else
                 rm -f 1 2 3 4
         fi
-	resetall
+        resetall
 }
 
 function directories() {
-	functionname="directories"
-	umask 0777
+        functionname="directories"
+        umask 0777
 
         nextsegment
         mkdir -m 0750 ./a
         mkdir -m 0710 ./a/b
         mkdir -m 0700 ./a/b/c
-	ls -l ./a/b
+        ls -l ./a/b
 
         nextsegment
         cd ./a
@@ -93,15 +93,16 @@ function directories() {
         touch bfile
         cd ./c
         touch cfile
-	chmod g+r cfile
+        chmod g+r cfile
         ls -l
 
         nextsegment
         cd ../..
         ls -l
 
+        cd ..
         rm -fr a
-	resetall
+        resetall
 }
       
 #files
