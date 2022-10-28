@@ -61,11 +61,18 @@ function permissions() {
 	chmod u=rw,g=r 2
 	chmod g=r      3
 	chmod u=rw,o=r 4
-	sudo chown root 2 4
-        ls -la ?
-        cat ?
 
-        sudo rm ?
+	sudo chown root 2 4
+        sudo_worked=$?
+
+        ls -la 1 2 3 4
+        cat 1 2 3 4
+
+        if [ $sudo_worked -eq 0 ]; then
+                sudo rm 1 2 3 4
+        else
+                rm -f 1 2 3 4
+        fi
 	resetall
 }
 
@@ -93,8 +100,8 @@ function directories() {
         cd ../..
         ls -l
 
-	resetall
         rm -fr a
+	resetall
 }
       
 #files
